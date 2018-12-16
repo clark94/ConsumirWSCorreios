@@ -1,0 +1,79 @@
+﻿<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
+
+<p></p>
+
+<form>
+
+    <fieldset>
+        <legend>Por favor inserir um CEP válido</legend>
+    </fieldset>
+
+    <div>
+        <label>Insira seu cep</label>
+    </div>
+
+    <div>
+        <input type="text" class="form-control" placeholder="Insira o cep que deseja consultar" id="cep">
+    </div>
+
+    <div>
+        <p></p>
+    </div>
+
+    <div>
+        <p></p>
+    </div>
+
+    <div>
+        <input type="button" class="btn btn-primary btn-sm btn-warning" value="Consultar CEP" onclick="ConsultaCep()" >
+    </div>
+
+</form>
+
+
+<script type="text/javascript">
+    $("#cep").mask("00000-000");
+
+    function ConsultaCep()
+    {
+
+        if ($("#cep").val() == "") {
+
+            alert("Por favor colocar um cep válido ");
+        }
+
+        else {
+
+            var c = $("#cep").val().replace("-", "");
+            //alert(c);
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    url: 'Home/ObterCep',
+                    dataType: 'html',
+                    data:
+                         {
+                            cep: c
+                          },
+                    cache: false,
+                    async: true,
+                    success: function (data) {
+                        $('#RetornoWS').html(data);
+                    }
+                });
+
+
+        }
+    }
+   
+</script>
+
+
+<br><br><br>
+
+
+<div id="RetornoWS">
+
+</div>

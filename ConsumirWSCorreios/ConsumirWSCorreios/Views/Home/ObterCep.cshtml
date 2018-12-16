@@ -1,0 +1,34 @@
+﻿@model ConsumirWSCorreios.Models.Cliente
+
+<form>
+    <fieldset>
+        <legend>Informações do cep</legend>
+
+        <div>
+            <label for="end" >Endereco</label>
+        </div>
+
+        <div>
+            <input type="text" class="form-control"  value="@Model.Endereco" id="end">
+        </div>
+
+        <div>
+            <label for="bairro">Bairro</label>
+        </div>
+
+        <div>
+            <input type="text" id="bairro"  class="form-control" value="@Model.Bairro">
+        </div>
+
+
+        <div>
+            <label for="cidade">Cidade</label>
+        </div>
+
+        <div>
+            <input type="text" id="cidade" class="form-control" value="@Model.Cidade">
+        </div>
+
+    </fieldset>
+
+</form>
