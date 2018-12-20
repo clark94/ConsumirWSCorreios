@@ -35,6 +35,8 @@
 <script type="text/javascript">
     $("#cep").mask("00000-000");
 
+   
+
     function ConsultaCep()
     {
 
@@ -47,6 +49,8 @@
 
             var c = $("#cep").val().replace("-", "");
             //alert(c);
+
+            $("#imgLoading").removeClass("hidden");
 
             $.ajax(
                 {
@@ -61,6 +65,7 @@
                     async: true,
                     success: function (data) {
                         $('#RetornoWS').html(data);
+                        $('#imgLoading').addClass("hidden");
                     }
                 });
 
@@ -73,6 +78,8 @@
 
 <br><br><br>
 
+
+<img src="~/images/Ninja.gif" id="imgLoading" class="hidden"> 
 
 <div id="RetornoWS">
 
